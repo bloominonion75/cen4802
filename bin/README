@@ -1,0 +1,26 @@
+Adam Hand
+CEN4802
+8/30/2026
+
+Assignment 1: My Task Manager
+
+Description:
+I made this application because I wanted to apply what I have learned, 
+and establish order in school life.
+
+Specifications:
+My project uses the Java language, along with its built in Httpserver.
+It also uses HTML for its front end. It is also uploaded for all to see on Github.
+
+The features:
+My application in its current state (1.0) can
+Display and Add tasks to my to-do list, and run through a web browser of your choice.
+
+How to display the task list:
+Because this uses HTML, it may be confusing as the main result is not in the console
+You need to run it, then copy the link of the local host into your main browser.
+
+Upgrades I want to implement in the future:
+Make tasks complete
+delete and edit
+due dates for tasks if needed

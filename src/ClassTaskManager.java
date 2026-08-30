@@ -16,11 +16,13 @@ public class ClassTaskManager {
 
 	public static void main(String[] args) throws IOException {
 		
-		tasks.add(new Task(nextId++, "Complete and submit this assignment"));
-		tasks.add(new Task(nextId++, "Do introduction work"));
-		tasks.add(new Task(nextId++, "Study for the test"));
+		tasks.add(new Task(1, "Complete and submit this assignment", false));
+		tasks.add(new Task(2, "Do introduction work", false));
+		tasks.add(new Task(3, "Study for the test", false));
 		
-		HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+		nextId = 4;
+		
+		HttpServer server = HttpServer.create(new InetSocketAddress(8081), 0);
 		
 		server.createContext("/", ClassTaskManager::handleRequest);
 		
@@ -28,12 +30,23 @@ public class ClassTaskManager {
 		
 		server.start();
 		
-		System.out.println("Your task manager is running at http://localhost:8080");
+		System.out.println("Your task manager is running at http://localhost:8081");
 		
 	}
 	private static void handleRequest(HttpExchange exchange) throws IOException {
 		
-		if (exchange.getRequestMethod().equalsIgnoreCase("POST")) {
+		String path = exchange.getRequestURI().getPath();
+		
+		if (path.equals("/complete")) {
+			String query = exchange.getRequestURI().getQuery();
+			
+			if (query != null && query.startsWith("id=")) {
+				int id = Integer.parseInt(query.substring(3));
+				completeTask(id);
+			}
+		}
+		
+		else if (exchange.getRequestMethod().equalsIgnoreCase("POST")) {
 			addTask(exchange);
 		}
 		String response = createPage();
@@ -46,6 +59,15 @@ public class ClassTaskManager {
 		output.write(responseBytes);
 		output.close();
 	}
+	private static void completeTask(int id) {
+		for (Task task : tasks) {
+			if (task.getId() == id) {
+				task.setCompleted(true);
+				return;
+			}
+		}
+		
+	}
 	private static void addTask(HttpExchange exchange) throws IOException {
 		String formData = new String(exchange.getRequestBody().readAllBytes(), StandardCharsets.UTF_8);
 		
@@ -55,7 +77,7 @@ public class ClassTaskManager {
 			description = description.substring("description=".length());
 		}
 		if (!description.isBlank()) {
-			tasks.add(new Task(nextId++, description));
+			tasks.add(new Task(nextId++, description, false));
 		}
 	}
 	private static String createPage() {
@@ -76,7 +98,16 @@ public class ClassTaskManager {
 			html.append(task.getId());
 			html.append(": ");
 			html.append(task.getDescription());
+			if (task.isCompleted()) {
+				html.append(" - completed!!");
+			}else {
+				html.append(" <a href='/complete?id=" + task.getId() + 
+						"'>" + "<input type='checkbox'>" + "</a>");
+			}
 			html.append("</li>");
+				
+			
+			
 		}
 		html.append("</ul>");
 		html.append("<h2>Add a Task</h2>");

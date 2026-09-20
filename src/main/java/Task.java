@@ -1,4 +1,4 @@
-
+package main.java;
 public class Task {
 	private int id;
 	private String description;
@@ -7,7 +7,7 @@ public class Task {
 	public Task(int id, String description, boolean completed) {
 		this.id = id;
 		this.description = description;
-		this.completed = false;
+		this.completed = completed;
 	}
 	
 	public int getId() {

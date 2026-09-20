@@ -24,3 +24,6 @@ Upgrades I want to implement in the future:
 Make tasks complete
 delete and edit
 due dates for tasks if needed
+
+(Week 3 changes)
+tested with this.completed = completed, to enable being true or false for if the tests are complete.

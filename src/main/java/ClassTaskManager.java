@@ -1,3 +1,4 @@
+package main.java;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
@@ -89,7 +90,7 @@ public class ClassTaskManager {
 		html.append("<title>My Task Manager</title>");
 		html.append("<head>");
 		html.append("<body>");
-		html.append("<h1>My Task Manager</h1>");
+		html.append("<h1>Adam's Task Manager</h1>");
 		html.append("<h2>My Tasks for the week</h2>");
 		html.append("<ul>");
 		

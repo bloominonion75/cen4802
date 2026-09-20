@@ -20,6 +20,7 @@ public class ClassTaskManager {
 		tasks.add(new Task(1, "Complete and submit this assignment", false));
 		tasks.add(new Task(2, "Do introduction work", false));
 		tasks.add(new Task(3, "Study for the test", false));
+		tasks.add(new Task(4, "review the concept of continous integration", false));
 		
 		nextId = 4;
 		

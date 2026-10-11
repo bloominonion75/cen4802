@@ -20,7 +20,7 @@ public class ClassTaskManager {
 		tasks.add(new Task(1, "Complete and submit this assignment", false));
 		tasks.add(new Task(2, "Do introduction work", false));
 		tasks.add(new Task(3, "Study for the test", false));
-		tasks.add(new Task(4, "review the concept of continous integration", false));
+		tasks.add(new Task(4, "Pet my cat Roxy :3 W Cat", false));
 		
 		nextId = 4;
 		
@@ -89,10 +89,14 @@ public class ClassTaskManager {
 		html.append("<html>");
 		html.append("<head>");
 		html.append("<title>My Task Manager</title>");
-		html.append("<head>");
+		html.append("</head>");
 		html.append("<body>");
 		html.append("<h1>Adam's Task Manager</h1>");
 		html.append("<h2>My Tasks for the week</h2>");
+		
+		html.append("<p id='task-counter'>Total tasks: ");
+		html.append(tasks.size());
+		html.append("</p>");
 		html.append("<ul>");
 		
 		for (Task task : tasks) {
@@ -115,7 +119,8 @@ public class ClassTaskManager {
 		html.append("<h2>Add a Task</h2>");
 		html.append("<form method='POST'>");
 		html.append("<input type='text' " + "name='description' " + "placeholder='Enter new task'>");
-		html.append("<button type='submit'" + "Add Task" + "</button>");
+	//	html.append("<button type='submit'" + "Add Task" + "</button>");
+		html.append("<button type='submit'>Add Task</button>");
 		html.append("</form>");
 		html.append("</body>");
 		html.append("</html>");

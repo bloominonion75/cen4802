@@ -13,6 +13,9 @@ import com.sun.net.httpserver.HttpServer;
 public class ClassTaskManager {
 	
 	private static List<Task> tasks = new ArrayList<>();
+	static int countTasks() {
+		return tasks.size();
+	}
 	private static int nextId = 1;
 
 	public static void main(String[] args) throws IOException {
@@ -95,7 +98,8 @@ public class ClassTaskManager {
 		html.append("<h2>My Tasks for the week</h2>");
 		
 		html.append("<p id='task-counter'>Total tasks: ");
-		html.append(tasks.size());
+		html.append(countTasks(tasks));
+	//	html.append(tasks.size());
 		html.append("</p>");
 		html.append("<ul>");
 		
@@ -127,4 +131,7 @@ public class ClassTaskManager {
 		
 		return html.toString();	
 	}
-}
+
+public static int countTasks(List<Task> taskList) {
+	return taskList.size();
+}}

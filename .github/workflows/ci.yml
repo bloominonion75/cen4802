@@ -30,15 +30,16 @@ jobs:
           name: task-manager-jar
           path: target/*.jar
           
+      
       - name: Build Docker image
-      	run: docker build -t task-manager:latest .
-      	
-      -name Save Docker image
-       run: docker save -o task-manager-image.tar task-manager:latest
-       
-      -name: Upload Docker image
-       uses: actions/upload-artifact@v4
-       with:
-       	name: task-manager-docker-image
-       	path: task-manager-image.tar
-       	if-no-files-found: error
+        run: docker build -t task-manager:latest .
+
+      - name: Save Docker image
+        run: docker save -o task-manager-image.tar task-manager:latest
+
+      - name: Upload Docker image
+        uses: actions/upload-artifact@v4
+        with:
+          name: task-manager-docker-image
+          path: task-manager-image.tar
+          if-no-files-found: error

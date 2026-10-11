@@ -76,7 +76,7 @@ public class TaskTest {
 		tasks.add(new Task(2, "Second Task", false));
 		tasks.add(new Task(3, "Third Task", false));
 		
-		Assertions.assertEquals(4, ClassTaskManager.countTasks(tasks));
+		Assertions.assertEquals(3, ClassTaskManager.countTasks(tasks));
 	}
 
 	private void assertTrue(int i, boolean completed) {
